@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import TopNavBar from "@/components/Navbar-component/TopNavBar";
 import BottomNavBar from "@/components/Navbar-component/BottomNavBar";
+import ColorThemes from "@/components/ColorThemes";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -24,7 +25,12 @@ export default function RootLayout({
           <div className="children m-5">
             <TopNavBar />
             {children}
-            <BottomNavBar />
+            <div className="bottombar absolute bottom-0 right-0 m-2 mr-14 mb-5">
+              <BottomNavBar />
+            </div>
+            <div className="colo-themes">
+              <ColorThemes />
+            </div>
           </div>
         </Providers>
       </body>

@@ -1,12 +1,12 @@
 "use client";
 import { ThemeSwitcher } from "@/utils/ThemeSwitcher";
 import { Avatar } from "@nextui-org/react";
-import { Bell, Mail, Shell } from "lucide-react";
+import { Bell, Shell } from "lucide-react";
 import React from "react";
 
 const TopNavBar = () => {
   return (
-    <nav className="div_conten flex justify-between">
+    <nav className="div_conten flex justify-between  ">
       <div className="icon bg-red-500 shadow-md dark:backdrop-blur-md dark:bg-red-500 p-2 rounded-md max-h-10  ">
         <Shell />
       </div>
