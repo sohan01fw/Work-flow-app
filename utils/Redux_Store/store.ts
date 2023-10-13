@@ -1,8 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
-// ...
+import colorSlice from "../Redux_Counter/colorSlice";
 
 export const store = configureStore({
-  reducer: {},
+  reducer: {
+    colorname: colorSlice,
+  },
 });
 
 // Infer the `RootState` and `AppDispatch` types from the store itself
