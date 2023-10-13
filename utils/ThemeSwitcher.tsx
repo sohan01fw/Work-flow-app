@@ -2,7 +2,7 @@
 "use client";
 
 import { Switch } from "@nextui-org/react";
-import { MoonIcon, SunIcon } from "lucide-react";
+import { Moon, MoonIcon, Sun, SunIcon } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 
@@ -25,10 +25,22 @@ export function ThemeSwitcher() {
   const changeIcon = () => {
     if (theme === "dark") {
       setDefaultSelected(false);
-      return <MoonIcon className="fill-black" />;
+      return (
+        <Moon
+          className="text-skin-base rounded-full"
+          strokeWidth={3}
+          size={20}
+        />
+      );
     } else {
       setDefaultSelected(true);
-      return <SunIcon className="fill-black" />;
+      return (
+        <Sun
+          className="text-skin-base rounded-full"
+          strokeWidth={3}
+          size={20}
+        />
+      );
     }
   };
   if (!mounted) return null;

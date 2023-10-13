@@ -1,6 +1,6 @@
 "use client";
 import { Avatar, Chip } from "@nextui-org/react";
-import React from "react";
+import React, { useState } from "react";
 
 export const ThemeBtn = () => {
   return (
@@ -20,6 +20,7 @@ const ColorBtn = (props: any) => {
   );
 };
 const ColorThemes = () => {
+  const [ThemeColor, setThemeColor] = useState();
   return (
     <>
       <ThemeBtn />

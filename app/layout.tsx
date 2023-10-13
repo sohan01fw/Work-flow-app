@@ -28,7 +28,7 @@ export default function RootLayout({
             <div className="bottombar absolute bottom-0 right-0 m-2 mr-14 mb-5">
               <BottomNavBar />
             </div>
-            <div className="colo-themes">
+            <div className="color-themes">
               <ColorThemes />
             </div>
           </div>

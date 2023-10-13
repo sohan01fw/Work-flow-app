@@ -28,11 +28,11 @@ const config: Config = {
       themes: {
         light: {
           // ...
-          colors: { primary: "red" },
+          colors: { primary: "#E4E4E7" },
         },
         dark: {
           // ...
-          colors: {},
+          colors: { primary: "white" },
         },
         // ... custom themes
       },

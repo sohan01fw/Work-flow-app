@@ -7,7 +7,7 @@ import React from "react";
 const TopNavBar = () => {
   return (
     <nav className="div_conten flex justify-between  ">
-      <div className="icon bg-red-500 shadow-md dark:backdrop-blur-md dark:bg-red-500 p-2 rounded-md max-h-10  ">
+      <div className="icon bg-skin-fill shadow-md dark:backdrop-blur-md dark:bg-skin-fill p-2 rounded-md max-h-10  ">
         <Shell />
       </div>
       <div className="profile flex justify-center gap-2 ">
