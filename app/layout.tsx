@@ -3,7 +3,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import TopNavBar from "@/components/Navbar-component/TopNavBar";
-import BottomNavBar from "@/components/Navbar-component/BottomNavBar";
+import BottomNavBar from "@/components/Navbar-component/PageNavBar";
 import ColorThemes from "@/components/ColorThemes";
 import ReduxProviders from "@/utils/ReduxProviders";
 

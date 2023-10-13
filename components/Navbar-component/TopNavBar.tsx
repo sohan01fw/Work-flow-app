@@ -1,12 +1,15 @@
 "use client";
+import { useColorThemes } from "@/lib/hooks/useColorThemes";
 import { ThemeSwitcher } from "@/utils/ThemeSwitcher";
 import { Avatar } from "@nextui-org/react";
 import { Bell, Shell } from "lucide-react";
 import React from "react";
 
 const TopNavBar = () => {
+  const countTheme = useColorThemes();
+
   return (
-    <nav className="div_conten flex justify-between  ">
+    <nav className={`div_conten flex justify-between theme-${countTheme}`}>
       <div className="icon bg-skin-fill shadow-md dark:backdrop-blur-md dark:bg-skin-fill p-2 rounded-md max-h-10  ">
         <Shell />
       </div>
@@ -25,7 +28,7 @@ const TopNavBar = () => {
         </div>
         <div className="notify flex justify-between  w-20 mr-[-19px] ">
           <Bell className="fill-black mt-2" />
-          <ThemeSwitcher />
+          <ThemeSwitcher colorTheme={countTheme} />
         </div>
       </div>
     </nav>

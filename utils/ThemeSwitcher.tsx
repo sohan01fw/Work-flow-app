@@ -6,7 +6,7 @@ import { Moon, MoonIcon, Sun, SunIcon } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 
-export function ThemeSwitcher() {
+export function ThemeSwitcher({ colorTheme }: any) {
   const [mounted, setMounted] = useState(false);
   const { theme, setTheme } = useTheme();
   const [defaultSelected, setDefaultSelected] = useState(false);
@@ -26,20 +26,12 @@ export function ThemeSwitcher() {
     if (theme === "dark") {
       setDefaultSelected(false);
       return (
-        <Moon
-          className="text-skin-base rounded-full"
-          strokeWidth={3}
-          size={20}
-        />
+        <Moon className="text-black rounded-full" strokeWidth={3} size={20} />
       );
     } else {
       setDefaultSelected(true);
       return (
-        <Sun
-          className="text-skin-base rounded-full"
-          strokeWidth={3}
-          size={20}
-        />
+        <Sun className="text-black rounded-full" strokeWidth={3} size={20} />
       );
     }
   };

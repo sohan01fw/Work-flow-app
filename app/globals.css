@@ -4,12 +4,13 @@
 
 @layer base {
   :root {
+  }
+  .theme-indigo {
     --text-color: #138086;
     --fill-color: #138086;
     --fill-color-gradient: bg-gradient-to-r from-[#48237f]via-purple-500
       to-pink-500;
   }
-
   .theme-green {
     --text-color: #17c964;
     --fill-color: #17c964;

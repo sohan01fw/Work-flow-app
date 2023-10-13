@@ -2,28 +2,33 @@
 import React from "react";
 import { Tabs, Tab, Tooltip } from "@nextui-org/react";
 import { AlarmClock, KanbanSquare, Layers, Settings2 } from "lucide-react";
+import Link from "next/link";
 
-export default function BottomNavBar() {
+export default function PageNavBar() {
   let tabs = [
     {
       id: "overview",
       label: "Overview",
       logo: <Layers />,
+      route: "/",
     },
     {
       id: "alarm",
       label: "Focus session",
       logo: <AlarmClock />,
+      route: "/focus-session",
     },
     {
       id: "task",
       label: "Task Manager",
       logo: <KanbanSquare />,
+      route: "/task",
     },
     {
       id: "setting",
       label: "Settings",
       logo: <Settings2 />,
+      route: "/setting",
     },
   ];
 
@@ -34,10 +39,12 @@ export default function BottomNavBar() {
           <Tab
             key={item.id}
             title={
-              <div className="flex items-center space-x-2">
-                {item.logo}
-                <span className="max-sm:hidden">{item.label}</span>
-              </div>
+              <Link href={`${item.route}`}>
+                <div className="flex items-center space-x-2 ">
+                  {item.logo}
+                  <span className="max-sm:hidden">{item.label}</span>
+                </div>
+              </Link>
             }
             className="font-bold"
           ></Tab>
