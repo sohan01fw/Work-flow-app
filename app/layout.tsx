@@ -1,10 +1,11 @@
-import { Providers } from "@/utils/Providers";
+import { ThemeProviders } from "@/utils/ThemeProviders";
 import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import TopNavBar from "@/components/Navbar-component/TopNavBar";
 import BottomNavBar from "@/components/Navbar-component/BottomNavBar";
 import ColorThemes from "@/components/ColorThemes";
+import ReduxProviders from "@/utils/ReduxProviders";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,18 +22,20 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} `}>
-        <Providers>
-          <div className="children m-5">
-            <TopNavBar />
-            {children}
-            <div className="bottombar absolute bottom-0 right-0 m-2 mr-14 mb-5">
-              <BottomNavBar />
+        <ReduxProviders>
+          <ThemeProviders>
+            <div className="children m-5">
+              <TopNavBar />
+              {children}
+              <div className="bottombar absolute bottom-0 right-0 m-2 mr-14 mb-5">
+                <BottomNavBar />
+              </div>
+              <div className="color-themes">
+                <ColorThemes />
+              </div>
             </div>
-            <div className="color-themes">
-              <ColorThemes />
-            </div>
-          </div>
-        </Providers>
+          </ThemeProviders>
+        </ReduxProviders>
       </body>
     </html>
   );

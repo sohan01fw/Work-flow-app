@@ -1,11 +1,12 @@
 "use client";
-import { Avatar, Chip } from "@nextui-org/react";
+import { useAppDispatch, useAppSelector } from "@/utils/Redux_Store/hooks";
 import React, { useState } from "react";
 
-export const ThemeBtn = () => {
+export const ThemeBtn = ({ state }: any) => {
+  console.log(state("sh"));
   return (
     <>
-      <ColorBtn bg="bg-skin-fill" />
+      <ColorBtn bg="bg-indigo-500" />
       <ColorBtn bg="bg-green-500" />
       <ColorBtn bg="bg-orange-500" />
     </>
@@ -20,10 +21,13 @@ const ColorBtn = (props: any) => {
   );
 };
 const ColorThemes = () => {
-  const [ThemeColor, setThemeColor] = useState();
+  const count = useAppSelector((state) => state?.colorname?.value);
+  const dispatch = useAppDispatch();
+  const [ThemeColor, setThemeColor] = useState("");
+  console.log(ThemeColor);
   return (
     <>
-      <ThemeBtn />
+      <ThemeBtn state={setThemeColor} />
     </>
   );
 };
