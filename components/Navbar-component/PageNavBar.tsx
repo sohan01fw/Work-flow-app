@@ -1,10 +1,16 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { Tabs, Tab, Tooltip } from "@nextui-org/react";
 import { AlarmClock, KanbanSquare, Layers, Settings2 } from "lucide-react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 export default function PageNavBar() {
+  const router = useRouter();
+  const [datavalue, setdatavalue] = useState("");
+  const handleTabChange = (id: any) => {
+    router.push(id);
+  };
   let tabs = [
     {
       id: "overview",

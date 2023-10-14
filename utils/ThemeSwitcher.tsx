@@ -1,7 +1,7 @@
 // app/components/ThemeSwitcher.tsx
 "use client";
 
-import { Switch } from "@nextui-org/react";
+import { Skeleton, Switch } from "@nextui-org/react";
 import { Moon, MoonIcon, Sun, SunIcon } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
@@ -35,7 +35,17 @@ export function ThemeSwitcher({ colorTheme }: any) {
       );
     }
   };
-  if (!mounted) return null;
+  if (!mounted)
+    return (
+      <Skeleton className="rounded-full  ">
+        <Switch
+          isSelected={defaultSelected}
+          size="sm"
+          color="primary"
+          thumbIcon={changeIcon}
+        />
+      </Skeleton>
+    );
   return (
     <Switch
       isSelected={defaultSelected}
