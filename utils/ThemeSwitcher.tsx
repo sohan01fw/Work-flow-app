@@ -26,24 +26,17 @@ export function ThemeSwitcher({ colorTheme }: any) {
     if (theme === "dark") {
       setDefaultSelected(false);
       return (
-        <Moon className="text-black rounded-full" strokeWidth={3} size={20} />
+        <Moon className=" text-black rounded-full" strokeWidth={3} size={20} />
       );
     } else {
       setDefaultSelected(true);
-      return (
-        <Sun className="text-black rounded-full" strokeWidth={3} size={20} />
-      );
+      return <Sun className="rounded-full" strokeWidth={3} size={20} />;
     }
   };
   if (!mounted)
     return (
-      <Skeleton className="rounded-full  ">
-        <Switch
-          isSelected={defaultSelected}
-          size="sm"
-          color="primary"
-          thumbIcon={changeIcon}
-        />
+      <Skeleton className="rounded-large ">
+        <Switch />
       </Skeleton>
     );
   return (

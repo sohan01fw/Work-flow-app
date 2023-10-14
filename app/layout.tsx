@@ -3,9 +3,9 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import TopNavBar from "@/components/Navbar-component/TopNavBar";
-import BottomNavBar from "@/components/Navbar-component/PageNavBar";
 import ColorThemes from "@/components/ColorThemes";
 import ReduxProviders from "@/utils/ReduxProviders";
+import PageNavBar from "@/components/Navbar-component/PageNavBar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -25,14 +25,17 @@ export default function RootLayout({
         <ReduxProviders>
           <ThemeProviders>
             <div className="children m-5">
-              <TopNavBar />
+              <div className="topnav m-1 mb-8">
+                <TopNavBar />
+              </div>
               {children}
-              <div className="bottombar absolute bottom-0 right-0 m-2 mr-14 mb-5">
-                <BottomNavBar />
+              <div className="bottombar absolute bottom-0 m-5  right-0">
+                <PageNavBar />
               </div>
-              <div className="color-themes">
+
+              {/* <div className="color-themes">
                 <ColorThemes />
-              </div>
+              </div> */}
             </div>
           </ThemeProviders>
         </ReduxProviders>
