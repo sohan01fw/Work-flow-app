@@ -10,7 +10,10 @@ const TopNavBar = () => {
 
   return (
     <nav className={`div_conten flex justify-between theme-${countTheme}`}>
-      <div className="icon bg-skin-fill shadow-md dark:backdrop-blur-md  dark:bg-skin-fill p-2 rounded-md max-h-10  ">
+      <div
+        className="icon bg-skin-fill shadow-md dark:backdrop-blur-md  dark:bg-skin-fill p-2 rounded-md max-h-10  "
+        style={{ backgroundColor: `${countTheme}` }}
+      >
         <Shell />
       </div>
       <div className="profile flex justify-center gap-2 ">

@@ -5,11 +5,11 @@ import React from "react";
 
 const colorData = [
   {
-    colorId: "indigo",
+    colorId: "#138086",
     color: "bg-cyan-500",
   },
-  { colorId: "green", color: "bg-green-500" },
-  { colorId: "yellow", color: "bg-yellow-500" },
+  { colorId: "#17c964", color: "bg-green-500" },
+  { colorId: "#f5a524", color: "bg-yellow-500" },
 ];
 const ColorThemes = () => {
   const dispatch = useAppDispatch();

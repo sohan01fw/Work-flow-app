@@ -1,25 +1,20 @@
 "use client";
-import React, { ChangeEvent, useState } from "react";
+import useAutoAdjustTextarea from "@/lib/hooks/useAutoAdjustTextarea";
+import React from "react";
 
 const TakeNote = () => {
-  const [expandArea, setexpandArea] = useState<string>("");
-
-  const handleChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
-    if (e) {
-      const areaHeight = e.target.scrollHeight + "px";
-      setexpandArea(areaHeight);
-    }
-  };
+  const { value, handleChange, textareaRef } = useAutoAdjustTextarea();
 
   return (
     <div>
       <textarea
+        ref={textareaRef}
         name="note"
         id="note"
         placeholder="Title....."
-        className={`textarea resize-none `}
-        style={{ height: expandArea }}
+        className="textarea resize-none  "
         onChange={handleChange}
+        value={value}
       />
     </div>
   );

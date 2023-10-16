@@ -33,7 +33,7 @@ export default function RootLayout({
                 <PageNavBar />
               </div>
 
-              {/* <div className="color-themes">
+              {/*  <div className="color-themes">
                 <ColorThemes />
               </div> */}
             </div>
