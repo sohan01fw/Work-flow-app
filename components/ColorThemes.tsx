@@ -15,19 +15,19 @@ const ColorThemes = () => {
   const dispatch = useAppDispatch();
 
   return (
-    <>
+    <div className="flex flex-col md:flex-row gap-2 m-2 ">
       {colorData.map((item) => {
         return (
           <div
             key={item.colorId}
-            className={`h-10 w-10 rounded-full ${item.color} shadow-md`}
+            className={`h-10 w-10 rounded-full cursor-pointer ${item.color} shadow-md`}
             onClick={() => {
               dispatch(getColor(item.colorId));
             }}
           ></div>
         );
       })}
-    </>
+    </div>
   );
 };
 

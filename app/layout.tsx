@@ -29,13 +29,13 @@ export default function RootLayout({
                 <TopNavBar />
               </div>
               {children}
-              <div className="bottombar absolute bottom-0 m-5  right-0">
+              <div className="bottombar absolute bottom-0 right-0 m-2 ">
                 <PageNavBar />
               </div>
 
-              {/*  <div className="color-themes">
+              <div className="color-themes absolute bottom-0 ">
                 <ColorThemes />
-              </div> */}
+              </div>
             </div>
           </ThemeProviders>
         </ReduxProviders>

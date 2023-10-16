@@ -12,7 +12,7 @@ const TakeNote = () => {
         name="note"
         id="note"
         placeholder="Title....."
-        className="textarea resize-none  "
+        className="textarea resize-none h-10 border w-full pl-2 pt-2 pb-  "
         onChange={handleChange}
         value={value}
       />
