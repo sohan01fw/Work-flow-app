@@ -1,23 +1,33 @@
 "use client";
-import useAutoAdjustTextarea from "@/lib/hooks/useAutoAdjustTextarea";
 import React from "react";
+import { Textarea } from "@nextui-org/react";
 
-const TakeNote = () => {
-  const { value, handleChange, textareaRef } = useAutoAdjustTextarea();
-
+export default function App() {
   return (
-    <div>
-      <textarea
-        ref={textareaRef}
-        name="note"
-        id="note"
-        placeholder="Title....."
-        className="textarea resize-none h-10 border w-full pl-2 pt-2 pb-  "
-        onChange={handleChange}
-        value={value}
-      />
-    </div>
-  );
-};
+    <>
+      <div className="w-full grid grid-cols-12 gap-4">
+        <Textarea
+          key="underlined"
+          variant="underlined"
+          label="Title"
+          minRows={2}
+          labelPlacement="outside"
+          placeholder="Enter your description"
+          className="col-span-12 md:col-span-6 mb-6 md:mb-0 "
+        />
+      </div>
 
-export default TakeNote;
+      <div className="w-full grid grid-cols-12 gap-4">
+        <Textarea
+          key="bordered"
+          variant="bordered"
+          label="Description"
+          minRows={8}
+          labelPlacement="outside"
+          placeholder="Enter your description"
+          className="col-span-12 md:col-span-6 mb-6 md:mb-0 font-bold "
+        />
+      </div>
+    </>
+  );
+}
