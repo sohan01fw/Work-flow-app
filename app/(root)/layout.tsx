@@ -6,7 +6,6 @@ import TopNavBar from "@/components/Navbar-component/TopNavBar";
 import ColorThemes from "@/components/ColorThemes";
 import ReduxProviders from "@/utils/ReduxProviders";
 import PageNavBar from "@/components/Navbar-component/PageNavBar";
-
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {

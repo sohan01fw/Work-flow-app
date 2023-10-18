@@ -1,4 +1,4 @@
-import HankoAuth from "@/utils/Auth/HankoAuth";
+import HankoAuth from "@/components/Auth/HankoAuth";
 import React from "react";
 
 const page = () => {
