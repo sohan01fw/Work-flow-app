@@ -13,7 +13,7 @@ export default function App() {
           minRows={2}
           labelPlacement="outside"
           placeholder="Enter your description"
-          className="col-span-12 md:col-span-6 mb-6 md:mb-0 "
+          className="col-span-12 md:col-span-6 mb-6 md:mb-0"
         />
       </div>
 

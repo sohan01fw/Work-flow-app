@@ -1,12 +1,13 @@
-import HankoAuth from "@/components/Auth/HankoAuth";
-import React from "react";
+import dynamic from "next/dynamic";
 
-const page = () => {
+const HankoAuth = dynamic(() => import("@/components/HankoAuth"), {
+  ssr: false,
+});
+
+export default function page() {
   return (
     <div className="border grid justify-center h-screen">
       <HankoAuth />
     </div>
   );
-};
-
-export default page;
+}
