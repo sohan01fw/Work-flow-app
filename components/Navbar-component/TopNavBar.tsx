@@ -3,10 +3,19 @@ import { useColorThemes } from "@/lib/hooks/useColorThemes";
 import { ThemeSwitcher } from "@/utils/ThemeSwitcher";
 import { Avatar } from "@nextui-org/react";
 import { Bell, Shell } from "lucide-react";
-import React from "react";
+import React, { useEffect } from "react";
+import { CurrentUser } from "../../utils/HankoConfig/Hanko";
 
 const TopNavBar = () => {
   const countTheme = useColorThemes();
+  const userData = async () => {
+    const { id, email } = await CurrentUser();
+    console.log({ id, email });
+  };
+
+  useEffect(() => {
+    userData();
+  }, []);
 
   return (
     <nav className={`div_conten flex justify-between theme-${countTheme}`}>

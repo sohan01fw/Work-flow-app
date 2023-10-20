@@ -1,18 +1,17 @@
 "use client";
 import { useEffect, useCallback, useState } from "react";
 import { useRouter } from "next/navigation";
-//@ts-ignore
-import { register, Hanko } from "@teamhanko/hanko-elements";
+
+import { Hanko, register } from "@teamhanko/hanko-elements";
 
 const hankoApi = process.env.NEXT_PUBLIC_HANKO_API_URL || "";
-
+const hanko = new Hanko(hankoApi);
 export default function HankoAuth() {
   const router = useRouter();
 
   const [hanko, setHanko] = useState<Hanko>();
 
   useEffect(() => {
-    //@ts-ignore
     import("@teamhanko/hanko-elements").then(({ Hanko }) =>
       setHanko(new Hanko(hankoApi))
     );
@@ -32,7 +31,6 @@ export default function HankoAuth() {
   );
 
   useEffect(() => {
-    //@ts-ignore
     register(hankoApi).catch((error) => {
       // handle error
     });
@@ -40,3 +38,9 @@ export default function HankoAuth() {
 
   return <hanko-auth />;
 }
+
+export const CurrentUser = async () => {
+  const { id, email } = await hanko.user.getCurrent();
+  const user = { id, email };
+  return user;
+};
