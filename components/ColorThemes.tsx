@@ -1,5 +1,5 @@
 "use client";
-import { getColor } from "@/utils/Redux_Counter/colorSlice";
+import { getColor } from "@/utils/Redux_Slice/colorSlice";
 import { useAppDispatch } from "@/utils/Redux_Store/hooks";
 import React from "react";
 
