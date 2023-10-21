@@ -1,16 +1,19 @@
 import mongoose from "mongoose";
-import { MongoClient } from "mongodb";
 
-const connUri = process.env.NEXT_PUBLIC_MONGODB_URI || "";
-const client = new MongoClient(connUri);
-export async function ConnToDb() {
-  if (!connUri) {
-    throw new Error("connection uri not available");
+const connURI = process.env.NEXT_PUBLIC_MONGODB_URI || "";
+
+export async function ConnectToDB() {
+  mongoose.set("strictQuery", true);
+  if (!connURI) {
+    throw new Error("Cannot get connection URI");
   }
-  try {
-    await mongoose.connect(connUri);
-    console.log("successfully connect to db");
-  } catch (error) {
-    console.log(error);
-  }
+
+  await mongoose
+    .connect(connURI)
+    .then(() => {
+      console.log("successfully connected");
+    })
+    .catch((error) => {
+      console.log(error);
+    });
 }
