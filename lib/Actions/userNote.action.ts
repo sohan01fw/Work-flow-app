@@ -2,32 +2,42 @@
 import { ConnectToDB } from "../mongodbConn";
 import userNotes from "../Models/userNote.model";
 
-type userNote = {
+type userNotes = {
+  userId: string;
   title: string;
   text: string;
 };
 
-export async function createUserNote({ title, text }: userNote) {
+export async function createUserNote({ userId, title, text }: userNotes) {
   await ConnectToDB();
 
   try {
-    /* const userNote = await userNotes.create({
-      userId: "1234",
-      notes: {
-        title: title,
-        text: text,
-      },
-    }); */
-    const createNotes = await userNotes
-      .findById(
-        "6533f3235b8def0625cb2ada"
-        /* { $push: { notes: { title: title, text: text } } },
-      { upsert: true, new: true } */
-      )
-      .exec();
-    console.log(createNotes);
+    const findUserNotes = await userNotes.findOne({ userId: userId });
+    console.log(findUserNotes);
+    if (!findUserNotes) {
+      await userNotes.create({
+        userId: userId,
+        notes: {
+          title: title,
+          text: text,
+        },
+      });
+    }
+    if (findUserNotes) {
+      try {
+        const createNotes = await userNotes
+          .findByIdAndUpdate(
+            { _id: findUserNotes._id },
+            { $push: { notes: { title: title, text: text } } },
+            { upsert: true, new: true }
+          )
+          .exec();
+      } catch (error: any) {
+        throw new Error("error updating user notes", error.message);
+      }
+    }
   } catch (error: any) {
     console.log(error);
-    throw new Error("Error while saving user note", error.message);
+    throw new Error("Error while creating user note", error.message);
   }
 }

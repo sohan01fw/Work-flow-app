@@ -5,6 +5,7 @@ import { useState } from "react";
 
 const CreateUserNote = () => {
   const [userNote, setUserNote] = useState({
+    userId: "se",
     title: "hoem",
     text: "sssssssssssskeke",
   });
