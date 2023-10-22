@@ -11,7 +11,7 @@ const CreateUserNote = () => {
   });
 
   const handleCreateUserNote = async () => {
-    await createUserNote(userNote);
+    createUserNote(userNote);
   };
 
   return (

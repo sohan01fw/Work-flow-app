@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import colorSlice from "../Redux_Slice/colorSlice";
+import noteSlice from "../Redux_Slice/noteSlice";
 
 export const store = configureStore({
   reducer: {
     colorname: colorSlice,
+    note: noteSlice,
   },
 });
 

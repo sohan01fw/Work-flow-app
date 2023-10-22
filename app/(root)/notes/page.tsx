@@ -1,7 +1,15 @@
+import GetNotes from "@/components/Notes/GetNotes";
 import TakeNote from "@/components/Notes/TakeNote";
-import React from "react";
+import { getUserNotes } from "@/lib/Actions/userNote.action";
 
-const page = () => {
+type notesData = {
+  title: string;
+  text: string;
+  _id: string;
+};
+const page = async () => {
+  const resNote = await getUserNotes({ userId: "se" });
+  console.log(resNote);
   return (
     <div>
       <div className="title">
@@ -12,6 +20,9 @@ const page = () => {
         </h1>
       </div>
       <TakeNote />
+      {resNote.map((data: notesData) => {
+        return <GetNotes key={data._id} title={data.title} text={data.text} />;
+      })}
     </div>
   );
 };
