@@ -9,7 +9,7 @@ type notesData = {
 };
 const page = async () => {
   const resNote = await getUserNotes({ userId: "se" });
-  console.log(resNote);
+
   return (
     <div>
       <div className="title">
