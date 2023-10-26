@@ -1,9 +1,30 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Draggable, DropResult, Droppable } from "react-beautiful-dnd";
-import { DndContext } from "./DndContext";
+import { DropResult } from "react-beautiful-dnd";
+const DndContext = dynamic(
+  () =>
+    import("react-beautiful-dnd").then((mod) => {
+      return mod.DragDropContext;
+    }),
+  { ssr: false }
+);
+const Droppable = dynamic(
+  () =>
+    import("react-beautiful-dnd").then((mod) => {
+      return mod.Droppable;
+    }),
+  { ssr: false }
+);
+const Draggable = dynamic(
+  () =>
+    import("react-beautiful-dnd").then((mod) => {
+      return mod.Draggable;
+    }),
+  { ssr: false }
+);
 import { cardsData } from "@/lib/data/CardsData";
+import dynamic from "next/dynamic";
 interface Cards {
   id: number;
   title: string;
@@ -47,23 +68,21 @@ const DndExample = () => {
 
   return (
     <DndContext onDragEnd={onDragEnd}>
-      <h1 className="text-center mt-8 mb-3 font-bold text-[25px] ">
-        Drag and Drop Application
-      </h1>
-      <div className="flex gap-4 justify-between my-20 mx-4 flex-col lg:flex-row">
-        {data.map((val, index) => {
+      <h1 className="text-center font-bold text-[25px]">Manage Your Tasks</h1>
+      <div className="flex gap-4 justify-between my-10 mx-4  ">
+        {data.map((val: any, index: any) => {
           return (
             <Droppable key={index} droppableId={`droppable${index}`}>
               {(provided) => (
                 <div
-                  className="p-5 lg:w-1/3 w-full bg-white  border-gray-400 border border-dashed"
+                  className="p-5 lg:w-1/3 w-full bg-white  border-gray-400 shadow-md "
                   {...provided.droppableProps}
                   ref={provided.innerRef}
                 >
                   <h2 className="text-center font-bold mb-6 text-black">
                     {val.title}
                   </h2>
-                  {val.components?.map((component, index) => (
+                  {val.components?.map((component: any, index: any) => (
                     <Draggable
                       key={component.id}
                       draggableId={component.id.toString()}

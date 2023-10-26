@@ -3,7 +3,7 @@ import React from "react";
 
 const page = async () => {
   return (
-    <div className="">
+    <div className="whitespace-nowrap w-full   max-h-[32rem] ">
       <TaskBoard />
     </div>
   );
