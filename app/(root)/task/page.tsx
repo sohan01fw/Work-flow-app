@@ -3,7 +3,7 @@ import React from "react";
 
 const page = async () => {
   return (
-    <div>
+    <div className="">
       <TaskBoard />
     </div>
   );
