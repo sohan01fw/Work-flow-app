@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Select, SelectItem, Selection } from "@nextui-org/react";
 import { useAppDispatch, useAppSelector } from "@/utils/Redux_Store/hooks";
-import { InputValue, onSelectHandler } from "@/utils/Redux_Slice/taskSlice";
+import { TaskValues, onSelectHandler } from "@/utils/Redux_Slice/taskSlice";
 
 export const animals = [
   {
@@ -20,7 +20,7 @@ export const animals = [
 
 export default function SelectDiv() {
   const [value, setValue] = useState<Selection>(new Set([]));
-  const SelectValue = useAppSelector(InputValue.selectValue);
+  const SelectValue = useAppSelector(TaskValues);
 
   const dispatch = useAppDispatch();
   dispatch(onSelectHandler(Object.values(value)[0]));
@@ -39,7 +39,7 @@ export default function SelectDiv() {
           </SelectItem>
         ))}
       </Select>
-      <p>omg:{SelectValue}</p>
+      <p>omg:{SelectValue.selectValue}</p>
     </div>
   );
 }

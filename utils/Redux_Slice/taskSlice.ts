@@ -24,9 +24,21 @@ export const taskSlice = createSlice({
 
 export const { onChangeHandler, onSelectHandler } = taskSlice.actions;
 
-export const InputValue = {
-  inputTaskValue: (state: RootState) => state.task.inputTaskValue,
-  selectValue: (state: RootState) => state.task.selectValue,
+type InputValue = {
+  inputTaskValue: string;
+  selectValue: string;
 };
+
+import { createSelector } from "@reduxjs/toolkit";
+
+export const TaskValues = createSelector(
+  (state: RootState) => state.task.inputTaskValue,
+  (state: RootState) => state.task.selectValue,
+  (inputTaskValue, selectValue) =>
+    ({
+      inputTaskValue,
+      selectValue,
+    } as InputValue)
+);
 
 export default taskSlice.reducer;

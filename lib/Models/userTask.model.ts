@@ -6,7 +6,7 @@ const userTaskSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    Tasks: [
+    tasks: [
       {
         id: { type: mongoose.Schema.Types.ObjectId, required: true },
         text: String,

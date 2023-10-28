@@ -12,13 +12,23 @@ import {
 } from "@nextui-org/react";
 import SelectDiv from "@/lib/ui/SelectDiv";
 import InputDiv from "@/lib/ui/InputDiv";
+import userTasks from "@/lib/Models/userTask.model";
+import { useAppSelector } from "@/utils/Redux_Store/hooks";
+import { TaskValues } from "@/utils/Redux_Slice/taskSlice";
+import { userTask } from "@/lib/Actions/userTask.action";
 
 export default function CreateTask() {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
-  const handleAddValues = () => {
-    console.log("dd");
+  const inputValue = useAppSelector(TaskValues);
+  console.log(inputValue);
+  const handleAddValues = async () => {
+    await userTask({
+      userId: "se",
+      text: "hey",
+      selectOpt: "progreess",
+      path: "/task",
+    });
   };
-
   return (
     <>
       <Button onPress={onOpen}>Open Modal</Button>
