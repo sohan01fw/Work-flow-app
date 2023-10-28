@@ -11,6 +11,7 @@ const CreateUserNote = () => {
   });
 
   const handleCreateUserNote = async () => {
+    //@ts-ignore
     createUserNote(userNote);
   };
 

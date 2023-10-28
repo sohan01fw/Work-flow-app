@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useId, useState } from "react";
 import { DropResult } from "react-beautiful-dnd";
 const DndContext = dynamic(
   () =>
@@ -25,6 +25,7 @@ const Draggable = dynamic(
 );
 import { cardsData } from "@/lib/data/CardsData";
 import dynamic from "next/dynamic";
+import { getUserTasks } from "@/lib/Actions/userTask.action";
 interface Cards {
   id: number;
   title: string;
@@ -65,7 +66,7 @@ const DndExample = () => {
   useEffect(() => {
     setData(cardsData);
   }, []);
-
+  console.log(data);
   return (
     <DndContext onDragEnd={onDragEnd}>
       <h1 className="text-center font-bold text-[25px]">Manage Your Tasks</h1>

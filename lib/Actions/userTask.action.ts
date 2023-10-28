@@ -44,3 +44,16 @@ export async function userTask({
     throw new Error("cannot create the task", error.message);
   }
 }
+
+export async function getUserTasks({ userId }) {
+  try {
+    const getTask = await userTasks.findOne({ userId: userId }).exec();
+
+    const { Tasks } = getTask;
+
+    revalidatePath("/task");
+    return Tasks;
+  } catch (error: any) {
+    throw new Error("Error while find user notes", error.message);
+  }
+}
