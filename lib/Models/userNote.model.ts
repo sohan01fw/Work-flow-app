@@ -9,6 +9,7 @@ const userNoteSchema = new mongoose.Schema(
     },
     notes: [
       {
+        id: { type: mongoose.Schema.Types.ObjectId, required: true },
         title: String,
         text: String,
       },

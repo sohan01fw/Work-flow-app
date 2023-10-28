@@ -1,8 +1,8 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../Redux_Store/store";
 interface CounterState {
-  inputTaskValue: string;
-  selectValue: string;
+  inputTaskValue?: string;
+  selectValue?: string;
 }
 const initialState: CounterState = {
   inputTaskValue: "",
@@ -24,7 +24,9 @@ export const taskSlice = createSlice({
 
 export const { onChangeHandler, onSelectHandler } = taskSlice.actions;
 
-export const InputText = (state: RootState) => state.task.inputTaskValue;
-export const SelectInput = (state: RootState) => state.task.selectValue;
+export const InputValue = {
+  inputTaskValue: (state: RootState) => state.task.inputTaskValue,
+  selectValue: (state: RootState) => state.task.selectValue,
+};
 
 export default taskSlice.reducer;

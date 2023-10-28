@@ -15,6 +15,9 @@ import InputDiv from "@/lib/ui/InputDiv";
 
 export default function CreateTask() {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
+  const handleAddValues = () => {
+    console.log("dd");
+  };
 
   return (
     <>
@@ -34,7 +37,12 @@ export default function CreateTask() {
                 <Button color="danger" variant="light" onPress={onClose}>
                   Close
                 </Button>
-                <Button color="primary" onPress={onClose}>
+                <Button
+                  color="primary"
+                  onPress={async () =>
+                    await Promise.all([onClose(), handleAddValues()])
+                  }
+                >
                   Add
                 </Button>
               </ModalFooter>

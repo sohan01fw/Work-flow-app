@@ -7,10 +7,11 @@ type userNotes = {
   userId: string;
   title: string;
   text: string;
+  path: string;
 };
 
 //creating and updating user notes
-export async function createUserNote({ userId, title, text }: userNotes) {
+export async function createUserNote({ userId, title, text, path }: userNotes) {
   await ConnectToDB();
 
   try {
@@ -33,6 +34,10 @@ export async function createUserNote({ userId, title, text }: userNotes) {
             { upsert: true, new: true }
           )
           .exec();
+        console.log(createNotes);
+        if (path) {
+          revalidatePath(path);
+        }
       } catch (error: any) {
         throw new Error("error updating user notes", error.message);
       }

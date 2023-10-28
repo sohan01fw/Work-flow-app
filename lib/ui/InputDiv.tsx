@@ -1,11 +1,10 @@
 import React from "react";
 import { Input } from "@nextui-org/react";
-import { useSelector } from "react-redux";
-import { InputText, onChangeHandler } from "@/utils/Redux_Slice/taskSlice";
+import { InputValue, onChangeHandler } from "@/utils/Redux_Slice/taskSlice";
 import { useAppDispatch, useAppSelector } from "@/utils/Redux_Store/hooks";
 
 export default function InputDiv() {
-  const inputTaskValue = useAppSelector(InputText);
+  const inputTaskValue = useAppSelector(InputValue.inputTaskValue);
   const dispatch = useAppDispatch();
   const onHandleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(onChangeHandler(e.target.value));
@@ -16,6 +15,7 @@ export default function InputDiv() {
         <Input
           variant="underlined"
           label="write your task..."
+          //@ts-ignore
           value={inputTaskValue}
           onChange={onHandleChange}
         />
