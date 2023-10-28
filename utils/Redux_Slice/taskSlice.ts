@@ -1,22 +1,30 @@
-import { Action, PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../Redux_Store/store";
-
-type initialValues = {
+interface CounterState {
   inputTaskValue: string;
-};
-const initialState: initialValues = {
+  selectValue: string;
+}
+const initialState: CounterState = {
   inputTaskValue: "",
+  selectValue: "",
 };
+
 export const taskSlice = createSlice({
-  name: "tasks",
+  name: "task",
   initialState,
   reducers: {
     onChangeHandler: (state, action: PayloadAction<string>) => {
       state.inputTaskValue = action.payload;
     },
+    onSelectHandler: (state, action: PayloadAction<string>) => {
+      state.selectValue = action.payload;
+    },
   },
 });
 
-export const { onChangeHandler } = taskSlice.actions;
-export const selectInputTask = (state: RootState) => state.task;
+export const { onChangeHandler, onSelectHandler } = taskSlice.actions;
+
+export const InputText = (state: RootState) => state.task.inputTaskValue;
+export const SelectInput = (state: RootState) => state.task.selectValue;
+
 export default taskSlice.reducer;

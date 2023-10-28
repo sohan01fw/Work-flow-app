@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import colorSlice from "../Redux_Slice/colorSlice";
-import { taskSlice } from "../Redux_Slice/taskSlice";
+import taskSlice from "../Redux_Slice/taskSlice";
 
 export const store = configureStore({
   reducer: {
