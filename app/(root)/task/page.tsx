@@ -11,7 +11,7 @@ const page = async () => {
     <div className="whitespace-nowrap w-full   max-h-[32rem] ">
       <CreateTask />
       <TaskBoard />
-      {resData.map((data) => {
+      {resData.map((data: any) => {
         return <DisplayTasks key={data._id} text={data.text} />;
       })}
     </div>

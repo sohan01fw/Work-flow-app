@@ -28,7 +28,7 @@ export async function userTask({
       try {
         await userTasks.findByIdAndUpdate(
           { _id: findUser._id },
-          { $push: { Tasks: { text: text, selectOpt: selectOpt } } },
+          { $push: { tasks: { text: text, selectOpt: selectOpt } } },
           { upsert: true, new: true }
         );
 
@@ -45,15 +45,15 @@ export async function userTask({
   }
 }
 
-export async function getUserTasks({ userId }) {
+export async function getUserTasks({ userId }: { userId: string }) {
+  await ConnectToDB();
   try {
     const getTask = await userTasks.findOne({ userId: userId }).exec();
-
-    const { Tasks } = getTask;
-
+    const { tasks } = getTask;
     revalidatePath("/task");
-    return Tasks;
+    return tasks;
   } catch (error: any) {
-    throw new Error("Error while find user notes", error.message);
+    console.log(error);
+    throw new Error("Error while find user tasks", error.message);
   }
 }
