@@ -22,13 +22,23 @@ export async function userTask({
     if (!findUser) {
       await userTasks.create({
         userId: userId,
+        tasks: [
+          {
+            selectOpt: selectOpt,
+            texts: [{ text: text }],
+          },
+        ],
       });
     }
     if (findUser) {
       try {
         await userTasks.findByIdAndUpdate(
           { _id: findUser._id },
-          { $push: { tasks: { text: text, selectOpt: selectOpt } } },
+          {
+            $push: {
+              tasks: { selectOpt: selectOpt, texts: { text: text } },
+            },
+          },
           { upsert: true, new: true }
         );
 
@@ -41,6 +51,7 @@ export async function userTask({
       revalidatePath(path);
     }
   } catch (error: any) {
+    console.log(error);
     throw new Error("cannot create the task", error.message);
   }
 }

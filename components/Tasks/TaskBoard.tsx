@@ -25,7 +25,6 @@ const Draggable = dynamic(
 );
 import { cardsData } from "@/lib/data/CardsData";
 import dynamic from "next/dynamic";
-import { getUserTasks } from "@/lib/Actions/userTask.action";
 interface Cards {
   id: number;
   title: string;
@@ -34,6 +33,7 @@ interface Cards {
     name: string;
   }[];
 }
+
 const DndExample = () => {
   const [data, setData] = useState<Cards[] | []>([]);
   const onDragEnd = (result: DropResult) => {
@@ -66,7 +66,7 @@ const DndExample = () => {
   useEffect(() => {
     setData(cardsData);
   }, []);
-  console.log(data);
+  /*  console.log(data); */
   return (
     <DndContext onDragEnd={onDragEnd}>
       <h1 className="text-center font-bold text-[25px]">Manage Your Tasks</h1>

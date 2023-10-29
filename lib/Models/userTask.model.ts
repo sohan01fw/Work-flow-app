@@ -8,14 +8,16 @@ const userTaskSchema = new mongoose.Schema(
     },
     tasks: [
       {
-        id: { type: mongoose.Schema.Types.ObjectId, required: true },
-        text: String,
         selectOpt: {
           type: String,
           required: true,
         },
+        texts: [
+          {
+            text: { type: String, required: true },
+          },
+        ],
       },
-      { timestamps: true },
     ],
   },
   { timestamps: true }
