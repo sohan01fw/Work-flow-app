@@ -24,8 +24,8 @@ export default function CreateTask() {
   const handleAddValues = async () => {
     await userTask({
       userId: "se",
-      text: "hey",
-      selectOpt: "progreess",
+      text: "writing",
+      selectOpt: "done",
       path: "/task",
     });
   };

@@ -31,37 +31,42 @@ export async function userTask({
       });
     }
     if (findUser) {
+      const checkSelectOpt = findUser.tasks.find(
+        (task: any) => task.selectOpt === selectOpt
+      );
+
       try {
-        // Get the existing tasks for the user.
-        const existingTasks = findUser.tasks;
-
-        // Check if the `selectOpt` value is already present in the `tasks` array.
-        const existingTaskWithSelectOpt = existingTasks.find(
-          (task: any) => task.selectOpt === selectOpt
-        );
-
-        // If the `selectOpt` value is not already present in the `tasks` array, create a new task.
-        if (!existingTaskWithSelectOpt) {
-          const newTask = { selectOpt, texts: [{ text }] };
-          existingTasks.push(newTask);
+        if (!checkSelectOpt) {
+          await userTasks.findByIdAndUpdate(
+            { _id: findUser._id },
+            {
+              $push: {
+                tasks: { selectOpt: selectOpt, texts: { text: text } },
+              },
+            },
+            { upsert: true, new: true }
+          );
         }
 
-        // Check if the `texts` array is already present in the `tasks` array for the `selectOpt` value.
-        const existingTextsArray = existingTaskWithSelectOpt?.texts;
+        if (checkSelectOpt) {
+          const existingTask = findUser.tasks.find(
+            (task: any) => task.selectOpt === selectOpt
+          );
 
-        // If the `texts` array is not already present in the `tasks` array for the `selectOpt` value, push the new text to the array.
-        if (!existingTextsArray) {
-          existingTaskWithSelectOpt.texts = [{ text }];
-        } else {
-          existingTextsArray.push({ text });
+          // Add the new text to the `texts` array for the existing task.
+          existingTask.texts.push({ text });
+
+          // Update the userTasks document with the updated task.
+          await userTasks.findByIdAndUpdate(
+            findUser._id,
+            {
+              $set: {
+                tasks: findUser.tasks,
+              },
+            },
+            { upsert: true, new: true }
+          );
         }
-
-        // Update the userTasks document with the updated tasks array.
-        await userTasks.findByIdAndUpdate(
-          findUser._id,
-          { tasks: existingTasks },
-          { upsert: true, new: true }
-        );
 
         // Revalidate the path if necessary.
         if (path === "/task") {
