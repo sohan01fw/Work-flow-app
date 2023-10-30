@@ -32,21 +32,46 @@ export async function userTask({
     }
     if (findUser) {
       try {
+        // Get the existing tasks for the user.
+        const existingTasks = findUser.tasks;
+
+        // Check if the `selectOpt` value is already present in the `tasks` array.
+        const existingTaskWithSelectOpt = existingTasks.find(
+          (task: any) => task.selectOpt === selectOpt
+        );
+
+        // If the `selectOpt` value is not already present in the `tasks` array, create a new task.
+        if (!existingTaskWithSelectOpt) {
+          const newTask = { selectOpt, texts: [{ text }] };
+          existingTasks.push(newTask);
+        }
+
+        // Check if the `texts` array is already present in the `tasks` array for the `selectOpt` value.
+        const existingTextsArray = existingTaskWithSelectOpt?.texts;
+
+        // If the `texts` array is not already present in the `tasks` array for the `selectOpt` value, push the new text to the array.
+        if (!existingTextsArray) {
+          existingTaskWithSelectOpt.texts = [{ text }];
+        } else {
+          existingTextsArray.push({ text });
+        }
+
+        // Update the userTasks document with the updated tasks array.
         await userTasks.findByIdAndUpdate(
-          { _id: findUser._id },
-          {
-            $push: {
-              tasks: { selectOpt: selectOpt, texts: { text: text } },
-            },
-          },
+          findUser._id,
+          { tasks: existingTasks },
           { upsert: true, new: true }
         );
 
-        revalidatePath(path);
+        // Revalidate the path if necessary.
+        if (path === "/task") {
+          revalidatePath(path);
+        }
       } catch (error: any) {
         throw new Error("failed to update the userTasks", error.message);
       }
     }
+
     if (path === "/task") {
       revalidatePath(path);
     }
@@ -60,9 +85,13 @@ export async function getUserTasks({ userId }: { userId: string }) {
   await ConnectToDB();
   try {
     const getTask = await userTasks.findOne({ userId: userId }).exec();
-    const { tasks } = getTask;
-    revalidatePath("/task");
-    return tasks;
+    if (getTask) {
+      const { tasks } = getTask;
+      revalidatePath("/task");
+      return tasks;
+    } else {
+      return null;
+    }
   } catch (error: any) {
     console.log(error);
     throw new Error("Error while find user tasks", error.message);

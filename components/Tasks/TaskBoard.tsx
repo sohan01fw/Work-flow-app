@@ -26,15 +26,16 @@ const Draggable = dynamic(
 import { cardsData } from "@/lib/data/CardsData";
 import dynamic from "next/dynamic";
 interface Cards {
-  id: number;
+  id: string;
   title: string;
-  components: {
-    id: number;
-    name: string;
-  }[];
+  texts: Array<{
+    id: string;
+    text: string;
+  }>;
 }
+[];
 
-const DndExample = () => {
+const DndExample = ({ id, title, texts }: any) => {
   const [data, setData] = useState<Cards[] | []>([]);
   const onDragEnd = (result: DropResult) => {
     const { source, destination } = result;
@@ -58,15 +59,17 @@ const DndExample = () => {
       const droppableIndex = newData.findIndex(
         (x) => x.id == source.droppableId.split("droppable")[1]
       );
-      const [item] = newData[droppableIndex].components.splice(source.index, 1);
+      const [item] = newData[droppableIndex]?.texts?.splice(source.index, 1);
       newData[droppableIndex].components.splice(destination.index, 0, item);
       setData([...newData]);
     }
   };
   useEffect(() => {
-    setData(cardsData);
+    const dataArr = [];
+    dataArr.push({ id, title, texts });
+    setData(dataArr);
   }, []);
-  /*  console.log(data); */
+  console.log(data);
   return (
     <DndContext onDragEnd={onDragEnd}>
       <h1 className="text-center font-bold text-[25px]">Manage Your Tasks</h1>
@@ -80,10 +83,10 @@ const DndExample = () => {
                   {...provided.droppableProps}
                   ref={provided.innerRef}
                 >
-                  <h2 className="text-center font-bold mb-6 text-black">
+                  <h2 className="text-center text-lg font-bold mb-6 text-black">
                     {val.title}
                   </h2>
-                  {val.components?.map((component: any, index: any) => (
+                  {val.texts?.map((component: any, index: any) => (
                     <Draggable
                       key={component.id}
                       draggableId={component.id.toString()}
@@ -96,7 +99,7 @@ const DndExample = () => {
                           {...provided.draggableProps}
                           ref={provided.innerRef}
                         >
-                          {component.name}
+                          {component.text}
                         </div>
                       )}
                     </Draggable>
