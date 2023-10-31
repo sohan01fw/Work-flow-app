@@ -4,6 +4,21 @@
 
 @layer base {
   :root {
+    --color: #424c55;
+    --color-shade-1: #d6d6d6;
+    --brand-color: #568aed;
+    --background-color: #ffffff;
+    --border-radius: 4px;
+    --font-size: 14px;
+    --item-height: 44px;
+    --headline1-font-size: 38px;
+    --headline1-font-weight: 600;
+    --container-padding: 40px;
+    --container-max-width: 410px;
+  }
+  hanko-profile {
+    --container-padding: 20px;
+    --container-max-width: 600px;
   }
   .theme-indigo {
     --text-color: #138086;
