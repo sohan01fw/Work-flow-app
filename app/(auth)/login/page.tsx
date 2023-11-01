@@ -6,8 +6,8 @@ const HankoAuth = dynamic(() => import("@/utils/HankoConfig/Hanko"), {
 
 export default function page() {
   return (
-    <div className="all flex justify-between border w-full h-screen">
-      <div className="loginDetails  max-lg:hidden ml-40  w-full  p-10 mt-28 ">
+    <div className="all flex justify-between  w-full h-screen max-xl:w-full">
+      <div className="loginDetails  max-xl:hidden ml-44 w-full  p-10 mt-28  ">
         <h2 className=" font-bold text-[60px] mb-10 w-[30rem]">
           Welcome <p>to Workflow</p>
         </h2>
@@ -21,8 +21,8 @@ export default function page() {
           do and achieve your wildest dreams!
         </h4>
       </div>
-      <div className="hankoauth w-full grid justify-center lg:w-[70%]  ">
-        <div className="justforhankoauth  rounded-lg shadow-medium mt-[10rem] h-[29rem]">
+      <div className="hankoauth w-full flex justify-center lg:w-[60%]    ">
+        <div className="hankodiv absolute  p-4  h-[30rem] w-[25rem] md:mt-[11rem] max-md:mt-[6rem] md:backdrop-blur-md bg-white/20 md:shadow-lg  ">
           <HankoAuth />
         </div>
       </div>
