@@ -21,8 +21,8 @@
     --border-radius: 7px;
   }
   hanko-profile {
-    --container-padding: 20px;
-    --container-max-width: 600px;
+    --container-padding: 30px;
+    --container-max-width: 500px;
   }
   .theme-indigo {
     --text-color: #138086;

@@ -38,7 +38,7 @@ const TopNavBar = () => {
             </span>
           </h3>
         </div>
-        <div className="notify flex justify-between  w-20 mr-[-19px] ">
+        <div className="notify flex justify-between  w-20  ">
           <Bell className="fill-black mt-2" />
           <ThemeSwitcher colorTheme={countTheme} />
         </div>

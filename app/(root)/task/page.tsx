@@ -17,7 +17,7 @@ const page = async () => {
   const resData = await getUserTasks({ userId: "se" });
 
   return (
-    <div className="whitespace-nowrap w-full max-h-[32rem] ">
+    <div className="whitespace-nowrap border ">
       <CreateTask />
       {resData?.map((data: taskBoardData) => {
         const textsId = JSON.stringify(
