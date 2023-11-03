@@ -93,6 +93,7 @@ export async function getUserTasks({ userId }: { userId: string }) {
     if (getTask) {
       const { tasks } = getTask;
       revalidatePath("/task");
+
       return tasks;
     } else {
       return null;
