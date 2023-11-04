@@ -52,7 +52,7 @@ export async function createUserNote({ userId, title, text, path }: userNotes) {
 //getting user created and updated notes from db
 
 export async function getUserNotes({ userId }: { userId: string }) {
-  await ConnectToDB();
+  /* await ConnectToDB(); */
   try {
     const getNotes = await userNotes.findOne({ userId: userId }).exec();
     const { notes } = getNotes;

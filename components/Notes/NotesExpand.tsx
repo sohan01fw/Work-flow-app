@@ -2,16 +2,17 @@
 import React from "react";
 import { Accordion, AccordionItem } from "@nextui-org/react";
 import CreateUserNote from "./TakeNote";
-import { AnchorIcon } from "lucide-react";
+import { AnchorIcon, PlusCircle } from "lucide-react";
 
 export default function NotesExpand() {
   return (
     <Accordion>
       <AccordionItem
         key="1"
-        indicator={<AnchorIcon />}
+        indicator={<PlusCircle />}
         aria-label="Take a note"
         title="Take a note"
+        className="shadow-md p-1 px-4 m-2 rounded-xl"
       >
         <CreateUserNote />
       </AccordionItem>

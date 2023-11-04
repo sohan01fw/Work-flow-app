@@ -12,7 +12,7 @@ const page = async () => {
   const resNote = await getUserNotes({ userId: "se" });
 
   return (
-    <div>
+    <div className="overflow-scroll h-[90%]">
       <div className="title">
         <h2 className="text-[40px]">📒</h2>
 
@@ -20,15 +20,17 @@ const page = async () => {
           Take a Note
         </h1>
       </div>
-      <div className="notetake">
-        <NotesExpand />
-      </div>
-      <div className="outputNotes flex flex-wrap">
-        {resNote.map((data: notesData) => {
-          return (
-            <GetNotes key={data._id} title={data.title} text={data.text} />
-          );
-        })}
+      <div className="shownoteDiv border">
+        <div className="notetake">
+          <NotesExpand />
+        </div>
+        <div className="outputNotes md:m-5 flex flex-wrap   overflow-y-scroll border h-[20rem] md:h-[35rem] ">
+          {resNote.map((data: notesData) => {
+            return (
+              <GetNotes key={data._id} title={data.title} text={data.text} />
+            );
+          })}
+        </div>
       </div>
     </div>
   );
