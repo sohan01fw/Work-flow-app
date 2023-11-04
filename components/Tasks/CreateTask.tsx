@@ -23,15 +23,17 @@ export default function CreateTask() {
   /*   console.log(inputValue); */
   const handleAddValues = async () => {
     await userTask({
-      userId: "se",
-      text: "writing",
-      selectOpt: "done",
+      userId: "aa",
+      text: "cooking",
+      selectOpt: "Planning",
       path: "/task",
     });
   };
   return (
-    <>
-      <Button onPress={onOpen}>Open Modal</Button>
+    <div className="">
+      <Button onPress={onOpen} className="" radius="lg">
+        Add a Tasks
+      </Button>
       <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
         <ModalContent>
           {(onClose) => (
@@ -60,6 +62,6 @@ export default function CreateTask() {
           )}
         </ModalContent>
       </Modal>
-    </>
+    </div>
   );
 }

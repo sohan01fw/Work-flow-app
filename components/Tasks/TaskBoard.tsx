@@ -1,8 +1,7 @@
 import DisplayTasks from "@/components/Tasks/DisplayTasks";
-import { getUserTasks } from "@/lib/Actions/userTask.action";
+import { getUserTasks, taskFrameModel } from "@/lib/Actions/userTask.action";
 import TasksProviders from "@/utils/TasksProviders";
 import React from "react";
-import { DragDropContext } from "react-beautiful-dnd";
 
 type taskBoardData = {
   _id: string;
@@ -12,14 +11,14 @@ type taskBoardData = {
     text: string;
   }>;
 };
-export let newArr: any = [];
 
 const TaskBoard = async () => {
-  const resData = await getUserTasks({ userId: "se" });
+  await taskFrameModel({ userId: "aa" });
+  const resData = await getUserTasks({ userId: "aa" });
 
   return (
     <TasksProviders>
-      <div className="whitespace-nowrap border ">
+      <div className="flex ">
         {resData?.map((data: taskBoardData, index: any) => {
           const textsId = JSON.stringify(
             data.texts.map((datas: any) => {

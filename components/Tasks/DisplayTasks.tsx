@@ -31,17 +31,15 @@ interface Cards {
 
 const DisplayTasks = ({ id, index, title, texts }: Cards) => {
   return (
-    <div className="flex gap-4 justify-between my-10 mx-4  ">
+    <div className="border w-full ">
       <Droppable key={index} droppableId={`droppable${index}`}>
         {(provided) => (
           <div
-            className="p-5 lg:w-1/3 w-full bg-white  border-gray-400 shadow-md border "
+            className=" bg-white  border-gray-400  "
             {...provided.droppableProps}
             ref={provided.innerRef}
           >
-            <h2 className="text-center text-lg font-bold mb-6 text-black">
-              {title}
-            </h2>
+            <h2 className=" text-black border">{title}</h2>
             {texts?.map((component: any, index: any) => (
               <Draggable
                 key={component.id}
@@ -50,7 +48,7 @@ const DisplayTasks = ({ id, index, title, texts }: Cards) => {
               >
                 {(provided) => (
                   <div
-                    className="bg-gray-200 mx-1 px-4 py-3 my-3"
+                    className="bg-gray-200 border p-3 "
                     {...provided.dragHandleProps}
                     {...provided.draggableProps}
                     ref={provided.innerRef}

@@ -9,6 +9,31 @@ interface usertaskDetails {
   selectOpt: string;
   path: string;
 }
+
+//To create task model in database
+export async function taskFrameModel({ userId }: { userId: string }) {
+  const findUser = await userTasks.findOne({ userId: userId }).exec();
+  if (!findUser) {
+    await userTasks.create({
+      userId: userId,
+      tasks: [
+        {
+          selectOpt: "Planning",
+          texts: [],
+        },
+        {
+          selectOpt: "In Progress",
+          texts: [],
+        },
+        {
+          selectOpt: "Completed",
+          texts: [],
+        },
+      ],
+    });
+  }
+}
+
 export async function userTask({
   userId,
   text,
@@ -19,17 +44,7 @@ export async function userTask({
 
   try {
     const findUser = await userTasks.findOne({ userId: userId }).exec();
-    if (!findUser) {
-      await userTasks.create({
-        userId: userId,
-        tasks: [
-          {
-            selectOpt: selectOpt,
-            texts: [{ text: text }],
-          },
-        ],
-      });
-    }
+
     if (findUser) {
       const checkSelectOpt = findUser.tasks.find(
         (task: any) => task.selectOpt === selectOpt
@@ -87,7 +102,7 @@ export async function userTask({
 }
 
 export async function getUserTasks({ userId }: { userId: string }) {
-  await ConnectToDB();
+  /* await ConnectToDB(); */
   try {
     const getTask = await userTasks.findOne({ userId: userId }).exec();
     if (getTask) {
