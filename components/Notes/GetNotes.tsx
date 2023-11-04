@@ -7,7 +7,7 @@ type notesAtt = {
 };
 const GetNotes = async ({ title, text }: notesAtt) => {
   return (
-    <div>
+    <div className="border">
       <h1>{title}</h1>
       <p>{text}</p>
     </div>

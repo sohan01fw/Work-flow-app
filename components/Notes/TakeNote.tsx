@@ -1,6 +1,6 @@
 "use client";
 import { createUserNote } from "@/lib/Actions/userNote.action";
-import { Textarea } from "@nextui-org/react";
+import { Button, Textarea } from "@nextui-org/react";
 import { useState } from "react";
 
 const CreateUserNote = () => {
@@ -16,13 +16,13 @@ const CreateUserNote = () => {
   };
 
   return (
-    <>
-      <div className="w-full grid grid-cols-12 gap-4">
+    <div className="">
+      <div className="w-full grid grid-cols-12 gap-1">
         <Textarea
           key="underlined"
           variant="underlined"
           label="Title"
-          minRows={2}
+          minRows={1}
           labelPlacement="outside"
           placeholder="Enter your description"
           className="col-span-12 md:col-span-6 mb-6 md:mb-0"
@@ -36,7 +36,7 @@ const CreateUserNote = () => {
           key="bordered"
           variant="bordered"
           label="Description"
-          minRows={8}
+          minRows={4}
           labelPlacement="outside"
           placeholder="Enter your description"
           className="col-span-12 md:col-span-6 mb-6 md:mb-0 font-bold "
@@ -45,8 +45,8 @@ const CreateUserNote = () => {
         />
       </div>
 
-      <button onClick={handleCreateUserNote}>Create User Note</button>
-    </>
+      <Button onClick={handleCreateUserNote}>Create User Note</Button>
+    </div>
   );
 };
 

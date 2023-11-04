@@ -23,8 +23,8 @@ export default function RootLayout({
       <body className={`${inter.className} `}>
         <ReduxProviders>
           <ThemeProviders>
-            <div className="children p-3 border  ">
-              <div className="topnav  mb-8 border  w-full">
+            <div className="children p-3  h-screen  ">
+              <div className="topnav  mb-8  w-full">
                 <TopNavBar />
               </div>
               {children}

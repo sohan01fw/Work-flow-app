@@ -1,4 +1,5 @@
 import GetNotes from "@/components/Notes/GetNotes";
+import NotesExpand from "@/components/Notes/NotesExpand";
 import TakeNote from "@/components/Notes/TakeNote";
 import { getUserNotes } from "@/lib/Actions/userNote.action";
 
@@ -19,10 +20,16 @@ const page = async () => {
           Take a Note
         </h1>
       </div>
-      <TakeNote />
-      {resNote.map((data: notesData) => {
-        return <GetNotes key={data._id} title={data.title} text={data.text} />;
-      })}
+      <div className="notetake">
+        <NotesExpand />
+      </div>
+      <div className="outputNotes flex flex-wrap">
+        {resNote.map((data: notesData) => {
+          return (
+            <GetNotes key={data._id} title={data.title} text={data.text} />
+          );
+        })}
+      </div>
     </div>
   );
 };

@@ -24,7 +24,7 @@ export default function CreateTask() {
   const handleAddValues = async () => {
     await userTask({
       userId: "aa",
-      text: "cooking",
+      text: "coding",
       selectOpt: "Planning",
       path: "/task",
     });
@@ -34,7 +34,7 @@ export default function CreateTask() {
       <Button onPress={onOpen} className="" radius="lg">
         Add a Tasks
       </Button>
-      <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
+      <Modal isOpen={isOpen} onOpenChange={onOpenChange} backdrop="blur">
         <ModalContent>
           {(onClose) => (
             <>

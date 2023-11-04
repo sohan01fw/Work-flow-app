@@ -1,7 +1,5 @@
 "use client";
 import dynamic from "next/dynamic";
-import { useEffect, useId, useState } from "react";
-import { DragDropContext, DropResult } from "react-beautiful-dnd";
 
 const Droppable = dynamic(
   () =>
@@ -31,15 +29,17 @@ interface Cards {
 
 const DisplayTasks = ({ id, index, title, texts }: Cards) => {
   return (
-    <div className="border w-full ">
+    <div className=" w-full md:w-60 mx-1 md:mx-3 ">
       <Droppable key={index} droppableId={`droppable${index}`}>
         {(provided) => (
           <div
-            className=" bg-white  border-gray-400  "
+            className="border-gray-400  "
             {...provided.droppableProps}
             ref={provided.innerRef}
           >
-            <h2 className=" text-black border">{title}</h2>
+            <h2 className=" text-black dark:text-white font-semibold md:text-[23px] m-2 whitespace-nowrap">
+              {title}
+            </h2>
             {texts?.map((component: any, index: any) => (
               <Draggable
                 key={component.id}
@@ -48,7 +48,7 @@ const DisplayTasks = ({ id, index, title, texts }: Cards) => {
               >
                 {(provided) => (
                   <div
-                    className="bg-gray-200 border p-3 "
+                    className=" backdrop-blur-lg bg-white/30 dark:bg-white/20  shadow-md p-3 mx-2 md:my-3 max-md:mb-5  m-3 md:w-48 rounded-xl text-gray-600 font-medium dark:text-gray-300  "
                     {...provided.dragHandleProps}
                     {...provided.draggableProps}
                     ref={provided.innerRef}
