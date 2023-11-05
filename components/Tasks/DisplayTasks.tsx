@@ -33,7 +33,7 @@ const DisplayTasks = ({ id, index, title, texts }: Cards) => {
       <Droppable key={index} droppableId={`droppable${index}`}>
         {(provided) => (
           <div
-            className="border-gray-400  "
+            className="border-gray-400 "
             {...provided.droppableProps}
             ref={provided.innerRef}
           >

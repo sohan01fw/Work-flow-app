@@ -21,10 +21,10 @@ const page = async () => {
         </h1>
       </div>
       <div className="shownoteDiv border">
-        <div className="notetake">
+        <div className="notetake md:w-[50%] ">
           <NotesExpand />
         </div>
-        <div className="outputNotes md:m-5 flex flex-wrap   overflow-y-scroll border h-[20rem] md:h-[35rem] ">
+        <div className="outputNotes m-5 flex flex-wrap max-sm:justify-center   overflow-y-scroll  h-[20rem] max-sm:h-[40rem] md:h-[35rem] ">
           {resNote.map((data: notesData) => {
             return (
               <GetNotes key={data._id} title={data.title} text={data.text} />

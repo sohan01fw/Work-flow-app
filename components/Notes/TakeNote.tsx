@@ -25,7 +25,11 @@ const CreateUserNote = () => {
           minRows={1}
           labelPlacement="outside"
           placeholder="Enter your description"
-          className="col-span-12 md:col-span-6 mb-6 md:mb-0"
+          className="col-span-12  mb-6 md:mb-0"
+          classNames={{
+            label: "text-lg",
+          }}
+          radius="md"
           value={userNote.title}
           onChange={(e) => setUserNote({ ...userNote, title: e.target.value })}
         />
@@ -38,8 +42,11 @@ const CreateUserNote = () => {
           label="Description"
           minRows={4}
           labelPlacement="outside"
+          classNames={{
+            label: "text-lg",
+          }}
           placeholder="Enter your description"
-          className="col-span-12 md:col-span-6 mb-6 md:mb-0 font-bold "
+          className="col-span-12  mb-6 md:mb-0 font-bold "
           value={userNote.text}
           onChange={(e) => setUserNote({ ...userNote, text: e.target.value })}
         />

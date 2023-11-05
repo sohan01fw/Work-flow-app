@@ -11,8 +11,8 @@ export default function NotesExpand() {
         key="1"
         indicator={<PlusCircle />}
         aria-label="Take a note"
-        title="Take a note"
-        className="shadow-md p-1 px-4 m-2 rounded-xl"
+        title="Create a Notes..."
+        className="shadow-md p-1 px-4 m-2 rounded-xl "
       >
         <CreateUserNote />
       </AccordionItem>

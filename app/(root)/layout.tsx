@@ -6,6 +6,7 @@ import TopNavBar from "@/components/Navbar-component/TopNavBar";
 import ColorThemes from "@/components/ColorThemes";
 import ReduxProviders from "@/utils/ReduxProviders";
 import PageNavBar from "@/components/Navbar-component/PageNavBar";
+import { ConnectToDB } from "@/lib/mongodbConn";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -18,6 +19,7 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  ConnectToDB();
   return (
     <html lang="en">
       <body className={`${inter.className} `}>
