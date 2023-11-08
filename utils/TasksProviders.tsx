@@ -1,11 +1,22 @@
 "use client";
-import { ReactNode } from "react";
-import { DragDropContext } from "react-beautiful-dnd";
+import { getUserTasks } from "@/lib/Actions/userTask.action";
+import { ReactNode, useEffect } from "react";
+import { DragDropContext, DropResult } from "react-beautiful-dnd";
 
 const TasksProviders = ({ children }: { children: ReactNode }) => {
+  const onDragEnd = (result: DropResult) => {
+    console.log(result);
+    const { source, destination } = result;
+    if (!destination) return;
+    if (
+      destination.droppableId === source.droppableId &&
+      destination.index === source.index
+    )
+      return;
+  };
   return (
     <div>
-      <DragDropContext onDragEnd={() => {}}>{children}</DragDropContext>
+      <DragDropContext onDragEnd={onDragEnd}>{children}</DragDropContext>
     </div>
   );
 };

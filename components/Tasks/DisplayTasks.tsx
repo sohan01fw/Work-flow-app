@@ -30,7 +30,7 @@ interface Cards {
 const DisplayTasks = ({ id, index, title, texts }: Cards) => {
   return (
     <div className=" w-full md:w-60 mx-1 md:mx-3 ">
-      <Droppable key={index} droppableId={`droppable${index}`}>
+      <Droppable key={index} droppableId={`${title}`}>
         {(provided) => (
           <div
             className="border-gray-400 "
